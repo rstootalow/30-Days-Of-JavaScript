@@ -43,8 +43,8 @@ body {
   background: black;
   position: absolute;
   top: 50%;
-  transform-origin: 100%;
-  transform: rotate(90deg);
+  transform-origin: 100%; /* setting 100% will move it to the right edge of the x axis*/
+  transform: rotate(90deg); /* setting rotate 90deg will have all hands facing at Noon to start*/
   transition: all 0.05s;
   transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
 }
