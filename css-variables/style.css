@@ -20,7 +20,7 @@ img {
 body {
   text-align: center;
   background-color: #193549;
-  /* color: white; */
+  color: white;
   font-family: 'helvetica neue', sans-serif;
   font-weight: 100;
   font-size: 50px;
@@ -36,5 +36,6 @@ a {
 }
 
 input {
-  width: 100px;
+  width: 10%;
+  height: 3vh;
 }
