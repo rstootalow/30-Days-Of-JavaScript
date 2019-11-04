@@ -76,25 +76,117 @@ const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick
 
 // Array.prototype.filter()
 // 1. Filter the list of inventors for those who were born in the 1500's
+/*
+const fifteen = inventors.filter(function(inventor) {
+  if(inventor.year >= 1500 && inventor.year < 1600) {
+    return true; // keep the inventor
+  } else {
+    return false; // ignore inventor
+  }
+})
+*/
+
+/* ES6 FAT ARROW REFACTOR*/
+const fifteen = inventors.filter(inventor => (inventor.year >= 1500 && inventor.year < 1600))
+
+console.table(fifteen);
+
 // Array.prototype.map()
-
 // 2. Give us an array of the inventors' first and last names
+
+// const fullName = inventors.map(function(inventor) {
+//
+// })
+
+/* ES6 FAT ARROW REFACTOR */
+const fullName = inventors.map(inventor => `${inventor.first} ${inventor.last}`);
+console.table(fullName);
+
 // Array.prototype.sort()
-
 // 3. Sort the inventors by birthdate, oldest to youngest
-// Array.prototype.reduce()
 
+/*
+const sorted = inventors.sort(function(firstPerson, secondPerson) {
+  if(firstPerson.year > secondPerson.year) {
+    return 1;
+  } else {
+    return -1;
+  }
+});
+
+*/
+
+/* ES6 FAT ARROW REFACTOR */
+const sorted = inventors.sort((firstPerson, secondPerson) => firstPerson.year > secondPerson.year ? 1 : -1);
+
+console.table(sorted);
+
+
+// Array.prototype.reduce()
 // 4. How many years did all the inventors live?
+const totalYears = inventors.reduce((total, inventor) => {
+  return total + (inventor.passed - inventor.year);
+}, 0);
+
+console.log('****** TOTAL NUMBERS OF YEARS LIVED BY ALL INVESTORS ******')
+console.log(totalYears);
 
 // 5. Sort the inventors by years lived
+
+/*
+const oldest = inventors.sort(function(a, b) {
+  const lastGuy = a.passed - a.year;
+  const nextGuy = b.passed - b.year;
+  if(lastGuy > nextGuy) {
+    return -1;
+  } else {
+    return 1;
+  }
+});
+*/
+
+/* Slight Refactor of if statment */
+
+const oldest = inventors.sort(function(firstInventor, secondInventor) {
+  const firstCheck = firstInventor.passed - firstInventor.year;
+  const nextCheck = secondInventor.passed - secondInventor.year;
+  return firstCheck > nextCheck ? -1 : 1;
+})
+
+console.log('****** TABLE VIEW OF INVENTORS RANKED FROM OLDEST TO YOUNGEST AT DEATH ******');
+console.table(oldest);
 
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+/*
+const category = document.querySelector('.mw-category');
+const links = Array.from)category.querySelector('a'));
+const de = links.map(link => link.textContent).filter(streetname => streetName.includes('de'));
+*/
+
 // 7. sort Exercise
 // Sort the people alphabetically by last name
+const alphaOrder = people.sort((lastOne, nextOne) => {
+  // const parts = lastOne.split(', ');
+  /*  Destructure results into variables */
+  const [aLast, aFirst] = lastOne.split(', ');
+  const [bLast, bFirst] = nextOne.split(', ');
+  return aLast > bLast ? 1 : -1;
+});
+
+console.table(alphaOrder);
 
 // 8. Reduce Exercise
 // Sum up the instances of each of these
 
 const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
+// how many instances of each
+const instance = data.reduce(function(object, item) {
+  // console.log(item);
+  if(!object[item]) {
+    object[item] = 0;
+  }
+  object[item]++
+  return object;
+}, {})
