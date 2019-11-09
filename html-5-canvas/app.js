@@ -1,54 +1,49 @@
 const canvas = document.querySelector('#draw');
-const context = canvas.getContext('2d');
-
-// set width and height of canvas using window
+const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+ctx.strokeStyle = '#BADA55';
+ctx.lineJoin = 'round';
+ctx.lineCap = 'round';
+ctx.lineWidth = 100;
 
-context.stroke = '#BADA55';
-content.lineJoin = 'round';
-context.lineCap = 'round';
-content.lineWidth = 100;
 
-// line direction and style variables
 let isDrawing = false;
 let lastX = 0;
 let lastY = 0;
 let hue = 0;
 let direction = true;
 
-function draw(event) {
-  if (!isDrawing) return; // stop mouse from drawing when it is not being click but still moving
-  console.log(event); // TEST
-  context.strokeStyle = `hsl(${hue}, 100%, 50%)`;
-  context.beginPath();
-  // start from
-  context.moveTp(lastX, lastY);
-  // go to
-  context.lineTo(event.offsetX, event.offsetY);
-  context.stroke();
-  [lastX, lastY] = [event.offsetX, event.offsetY];
+function draw(e) {
+  if (!isDrawing) return;
+  console.log(e);
+  ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+  ctx.beginPath();
+  ctx.moveTo(lastX, lastY);
+  ctx.lineTo(e.offsetX, e.offsetY);
+  ctx.stroke();
+  [lastX, lastY] = [e.offsetX, e.offsetY];
 
   hue++;
   if (hue >= 360) {
     hue = 0;
   }
-  if (context.lineWidth >= 100 || context.lineWidth <= 1) {
+  if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
     direction = !direction;
   }
 
-  if(direction) {
-    context.lineWidth++;
+  if (direction) {
+    ctx.lineWidth++;
   } else {
-    context.lineWidth--
+    ctx.lineWidth--;
   }
-}
+} // end of function
 
-canvas.addEventListener('mousedown', (event) => {
+canvas.addEventListener('mousedown', (e) => {
   isDrawing = true;
-  [lastX, lastY] = [event.offsetX, event.offsetY]
+  [lastX, lastY] = [e.offsetX, e.offsetY];
 });
 
-canvas.addEventListener('mousedown', draw);
+canvas.addEventListener('mousemove', draw);
 canvas.addEventListener('mouseup', () => isDrawing = false);
 canvas.addEventListener('mouseout', () => isDrawing = false);
