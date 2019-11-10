@@ -1,6 +1,9 @@
 // select all checkbox inputs
 const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
 
+// select checkboxes with checked attr
+document.querySelector('button').addEventListener('click', clearSelection);
+
 // init variable for the last checkbox checked
 let lastChecked;
 
@@ -27,6 +30,10 @@ function handleCheck(event) {
 
   lastChecked = this;
 
+} // end of handleCheck function
+
+function clearSelection(event) {
+  checkboxes.forEach(checkbox => checkbox.checked = false);
 }
 
 //event listener for click of checkbox
