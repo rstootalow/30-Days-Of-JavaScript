@@ -29,7 +29,8 @@ function populateList(plates = [], platesList) {
     // return the html you want to inject into the document
     return `
       <li>
-        <label for="">${plate.text}</label>
+      <input type="checkbox" data-index=${i} id="item${i}" ${plate.done ? 'checked' : ''} />
+        <label for="item${i}">${plate.text}</label>
       </li>
     `;
   }).join('') // map will return an array. .join will join that data as one large string
