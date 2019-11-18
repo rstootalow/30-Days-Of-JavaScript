@@ -40,6 +40,18 @@ function populateList(plates = [], platesList) {
   }).join('') // map will return an array. .join will join that data as one large string
 }
 
+// toggle function
+function toggleDone(event) {
+  if (!event.target.matches('input')) return // skip this UNLESS it is an input
+  const eventListener = event.target;
+  const index = eventListener.dataset.index;
+  items[index].done = !items[index].done; // think of this as a boolean toogle. if false => true, if true => false;
+  localStorage.setItem('items', JSON.stringify(items));
+  // populate the list upon refresh
+  populateList(items, itemsList);
+}
+
 addItems.addEventListener('submit', addItem);
+itemsList.addEventListener('click', toggleDone);
 
 populateList(items, itemsList)
