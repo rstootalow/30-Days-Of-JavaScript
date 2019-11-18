@@ -6,7 +6,10 @@ const addItems = document.querySelector('.add-items');
 const itemsList = document.querySelector('.plates');
 
 // empty array to store all selected items
-const items = []
+// const items = []
+
+// local storage or empty area if no previous data. Will take localStorage and parse into array of objects
+const items = JSON.parse(localStorage.getItem('items')) || []
 
 
 function addItem(event) {
@@ -19,7 +22,8 @@ function addItem(event) {
   };
   // console.table(item);
   items.push(item);
-  populateList(items, itemsList)
+  populateList(items, itemsList);
+  localStorage.setItem('items', JSON.stringify(items));
   this.reset(); // form elements have reset() built in to them to clear after submissions.
 }
 
@@ -37,3 +41,5 @@ function populateList(plates = [], platesList) {
 }
 
 addItems.addEventListener('submit', addItem);
+
+populateList(items, itemsList)
