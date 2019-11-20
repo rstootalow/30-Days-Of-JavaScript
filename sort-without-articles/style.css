@@ -3,9 +3,14 @@ body {
   font-family: sans-serif;
   background: url("https://source.unsplash.com/nDqA4d5NL0k/2000x2000");
   background-size: cover;
-  display: flex;
+  /* display: flex; */
   align-items: center;
   min-height: 100vh;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 50px;
 }
 
 #bands {
