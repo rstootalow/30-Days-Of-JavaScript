@@ -40,18 +40,22 @@ function paintToCanvas() {
   }, 16);
 } // end of paintToCanvas
 
-// function paintToCanvas() {
-//   const width = width.videoWidth;
-//   const height = video.videoHeight;
-//   // console.log(width, height); this call the width and height of the actual video in the browser;
-//
-//   // make sure the canvas is the same saize as the webcam video
-//   canvas.width = width;
-//   canvas.height = height;
-//
-//   setInterval(() => {
-//     ctx.drawImage(video, 0, 0, width, height); // pass in video element, start at top corners(0,0) and run the entire width and height
-//   }, 16)
-// } // end of paintToCanvas
+
+// take photo
+function takePhoto() {
+  snap.currentTime = 0;
+  snap.play();
+
+  // take the data out of the canvas
+  const data = canvas.toDataURL('image/jpeg');
+  const link = document.createElement('a');
+  link.href = data;
+  link.setAttribute('download', 'handsome');
+  link.innerHTML = `<img src="${data}" alt="Definatley a 7"/>`
+  strip.insertBefore(link, strip.firstChild);
+} // end of takePhoto
 
 getVideo();
+
+// event listener to play paintToCanvas after getVideo.
+video.addEventListener('canplay', paintToCanvas);
