@@ -15,5 +15,12 @@ function populateVoices() {
     .map(voice => `<option value=${voice.name}>${voice.name} (${voice.lang})</option>`)
     .join('');
 }
+
+function setVoice() {
+  console.log('Changing voice');
+}
 // using speechSynthesis global variable
 speechSynthesis.addEventListener('voiceschanged', populateVoices);
+
+// event listener when voice type changes
+voicesDropdown.addEventListener('change', setVoice);
