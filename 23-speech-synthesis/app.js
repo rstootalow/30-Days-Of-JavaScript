@@ -30,9 +30,16 @@ function toggle(startOver = true) {
     }
 }
 
+function setOption() {
+  console.log(this.name, this.value);
+}
+
 
 // using speechSynthesis global variable
 speechSynthesis.addEventListener('voiceschanged', populateVoices);
 
 // event listener when voice type changes
 voicesDropdown.addEventListener('change', setVoice);
+
+// options
+options.forEach(option => option.addEventListener('change', setOption));
