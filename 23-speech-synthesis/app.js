@@ -16,8 +16,10 @@ function populateVoices() {
     .join('');
 }
 
-function setVoice() {
-  console.log('Changing voice');
+function setVoice() { // to set voice we need to find the correct speechSynthesis object we are selecting
+  // console.log('Changing voice');
+  console.log(this.value);
+  msg.voice = voices.find(voice => voice.name === this.value);
 }
 // using speechSynthesis global variable
 speechSynthesis.addEventListener('voiceschanged', populateVoices);
