@@ -39,7 +39,7 @@ body {
 
 h1 {
   width: calc(100% + 4rem);
-  margin: -2rem 0 rem -2rem;
+  margin: -2rem 0 2rem -2rem;
   padding: .5rem;
   background: #ffc600;
   border-bottom: 5px solid #F3C010;
@@ -68,7 +68,7 @@ textarea {
   height: 20rem;
 }
 
-input[type='select'] {
+input[type="select"] {
 
 }
 
