@@ -10,7 +10,7 @@ function handleMove(e) {
   // turn that into a percentage
   const percent = y / this.offsetHeight;
   // set min and max values of scroll bar
-  const min = 0.4;
+  const min = 0.1;
   const max = 4;
   const height = Math.round(percent * 100) + '%';
   const playbackRate = percent * (max - min) + min;
