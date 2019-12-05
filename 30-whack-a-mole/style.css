@@ -1,7 +1,7 @@
 html {
   box-sizing: border-box;
   font-size: 10px;
-  background: #FFC600;
+  background: #ffc600;
 }
 
 *, *:before, *:after {
@@ -22,7 +22,7 @@ h1 {
 }
 
 .score {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255,255,255,0.2);
   padding: 0 3rem;
   line-height: 1;
   border-radius: 1rem;
@@ -44,24 +44,24 @@ h1 {
 
 .hole:after {
   display: block;
-  background: url('images/dirt.svg');
+  background: url(images/dirt.svg) bottom center no-repeat;
   background-size: contain;
   content: '';
   width: 100%;
-  height: 70px;
+  height:70px;
   position: absolute;
   z-index: 2;
   bottom: -30px;
 }
 
 .mole {
-  background: url('images/mole.svg') bottom center no-repeat;
+  background: url(images/mole.svg) bottom center no-repeat;
   background-size: 60%;
   position: absolute;
   top: 100%;
   width: 100%;
   height: 100%;
-  transitional: all 0.4s;
+  transition:all 0.4s;
 }
 
 .hole.up .mole {
